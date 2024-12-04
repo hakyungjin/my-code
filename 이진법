@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <math.h>
+#include <string.h>
+int main() {
+
+  char bit[30];
+  long long sum=0;
+  
+  scanf("%s",bit);
+  int n=strlen(bit);
+ for(int i=0;i<n;i++) {
+
+
+    if(bit[n-i-1]=='1') {sum+=pow(2,i);}
+ }
+ printf("%d",sum); }
