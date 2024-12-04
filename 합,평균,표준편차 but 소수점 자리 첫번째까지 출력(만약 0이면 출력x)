@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int n;
+    scanf("%d", &n); // 도시락의 개수 입력
+
+    int prices[n];       // 도시락 가격 배열
+    int sum = 0;         // 합계
+    double mean;         // 평균
+    double variance = 0; // 분산
+    double std_dev;      // 표준편차
+
+    // 도시락 가격 입력 및 합계 계산
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &prices[i]);
+        sum += prices[i];
+    }
+
+    // 평균 계산
+    mean = (double)sum / n;
+
+    // 분산 계산 (편차 제곱합의 평균)
+    for (int i = 0; i < n; i++) {
+        variance += pow(prices[i] - mean, 2); // 편차 제곱의 합
+    }
+    variance /= n;
+
+    // 표준편차 계산
+    std_dev = sqrt(variance);
+
+    // 결과 출력
+    // 합계 출력
+    printf("%d\n", sum);
+
+    // 평균 출력
+    if (fabs(mean - round(mean)) <= 0.05) { // 0.05 포함
+        printf("%.0f\n", mean); // 정수로 출력
+    } else {
+        printf("%.1f\n", mean); // 소수점 첫째 자리까지 출력
+    }
+
+    // 표준편차 출력
+    if (fabs(std_dev - round(std_dev)) <= 0.05) { // 0.05 포함
+        printf("%.0f\n", std_dev); // 정수로 출력
+    } else {
+        printf("%.1f\n", std_dev); // 소수점 첫째 자리까지 출력
+    }
+
+    return 0;
+}
