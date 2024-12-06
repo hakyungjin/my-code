@@ -1,0 +1,39 @@
+#include <stdio.h> 
+#include <stdlib.h>
+int main() {
+   
+   int n;
+   scanf("%d",&n);
+   int* student=malloc(sizeof(int)*n);
+   
+
+   for(int i=0; i<n;i++) {
+
+      student[i]=i+1;
+   }
+  for(int i=0; i<n;i++) {
+    int k;
+    int temp=student[i];
+
+    scanf("%d",&k); 
+
+    for(int j=i;j>i-k;j--){
+
+    student[j]=student[j-1];
+
+
+
+    }
+    student[i-k]=temp;
+    
+  }
+
+ for(int i=0;i<n; i++) {
+
+
+   printf("%d ",student[i]);
+ }
+  free(student);
+}
+
+
